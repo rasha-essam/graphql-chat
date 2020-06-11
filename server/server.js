@@ -17,7 +17,7 @@ app.use(
   bodyParser.json(),
   expressJwt({
     credentialsRequired: false,
-    secret: jwtSecret,
+    secret: jwtSecret
   })
 );
 

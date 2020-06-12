@@ -10,12 +10,16 @@ class MessageList extends Component {
   }
 
   render() {
-    const {messages} = this.props;
+    const { messages } = this.props;
     return (
-      <div ref={this.boxRef} className="box" style={{height: '50vh', overflowY: 'scroll'}}>
+      <div
+        ref={this.boxRef}
+        className="box"
+        style={{ height: '50vh', overflowY: 'scroll' }}
+      >
         <table>
           <tbody>
-            {messages.map(this.renderMessage.bind(this))}
+            {messages && messages.map(this.renderMessage.bind(this))}
           </tbody>
         </table>
       </div>
@@ -23,17 +27,19 @@ class MessageList extends Component {
   }
 
   renderMessage(message) {
-    const {user} = this.props;
+    const { user } = this.props;
     let tag = 'tag';
     if (message.from === user) {
       tag += ' is-primary';
     }
     return (
       <tr key={message.id}>
-        <td><span className={tag}>{message.from}</span></td>
-        <td style={{paddingLeft: '0.75em'}}>{message.text}</td>
+        <td>
+          <span className={tag}>{message.from}</span>
+        </td>
+        <td style={{ paddingLeft: '0.75em' }}>{message.text}</td>
       </tr>
-    )
+    );
   }
 }
 
